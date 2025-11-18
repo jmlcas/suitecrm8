@@ -1,13 +1,11 @@
 # SuiteCRM 8
 
-SuiteCRM 8 - Docker-compose
-
-Ver en "localhost:8200"
+Ver en "http://localhost:8200"
 
 User: user
 
 Password: bitnami
-
+--------------------
 
 Para cambiar el idioma:
 
