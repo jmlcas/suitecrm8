@@ -4,7 +4,8 @@ Ver en "http://localhost:8200"
 
 User: user
 
-Password: bitnami
+Passwod: p4ssw0rd
+
 --------------------
 
 Para cambiar el idioma:
