@@ -11,19 +11,13 @@ services:
        MARIADB_ROOT_PASSWORD: rootpass
     volumes:
       - /volume1/docker/suitecrm/db:/var/lib/mysql:rw
-    restart: on-failure:5
+    restart: unless-stopped
 
   suitecrm:
     image: docker.io/bitnamilegacy/suitecrm:8
     container_name: SuiteCRM
     ports:
-      - 8328:8080
-    healthcheck:
-      test: timeout 10s bash -c ':> /dev/tcp/127.0.0.1/8080' || exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 90s
+      - "8200:8080"
     environment:
        ALLOW_EMPTY_PASSWORD: no
        SUITECRM_DATABASE_HOST: db
@@ -31,12 +25,12 @@ services:
        SUITECRM_DATABASE_USER: suitecrmuser
        SUITECRM_DATABASE_NAME: suitecrm
        SUITECRM_DATABASE_PASSWORD: suitecrmpass
-       SUITECRM_USERNAME: marius
-       SUITECRM_PASSWORD: mariushosting
-       SUITECRM_HOST: https://suitecrm.yourname.synology.me
+       SUITECRM_USERNAME: user
+       SUITECRM_PASSWORD: p4ssw0rd
+       SUITECRM_HOST: http//localhost:8200   # IP+puerto ó dominio
     volumes:
       - /volume1/docker/suitecrm/data:/bitnami/suitecrm:rw
     depends_on:
       - db
-    restart: on-failure:5      
+    restart: unless-stopped      
     
